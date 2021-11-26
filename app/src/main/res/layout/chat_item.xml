@@ -9,5 +9,9 @@
         android:background="@drawable/rounded_corner_view"
 
         />
+    <ImageView
+        android:id="@+id/imgViewmsg"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 
 </RelativeLayout>

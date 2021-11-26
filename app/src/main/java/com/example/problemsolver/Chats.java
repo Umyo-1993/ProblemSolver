@@ -25,5 +25,17 @@ public class Chats {
         this.msg = msg;
     }
 
-    String sender,receiver,msg;
+    String sender;
+    String receiver;
+    String msg;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    String imageUrl;
 }

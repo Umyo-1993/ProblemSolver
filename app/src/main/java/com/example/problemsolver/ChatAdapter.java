@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -38,6 +41,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
 
         holder.chatmsg.setText(chats.getMsg());
 
+        Glide.with(context)
+                .load(chats.getImageUrl())
+                .into(holder.imgmsg);
     }
 
     @Override
@@ -48,12 +54,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
     public static class MyViewHolder1 extends RecyclerView.ViewHolder{
 
         TextView chatmsg;
+        ImageView imgmsg;
 
         public MyViewHolder1(@NonNull View itemView) {
             super(itemView);
 
 
             chatmsg=itemView.findViewById(R.id.chat_view);
+            imgmsg=itemView.findViewById(R.id.imgViewmsg);
 
         }
     }

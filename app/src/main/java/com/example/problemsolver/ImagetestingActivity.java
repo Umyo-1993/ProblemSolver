@@ -22,12 +22,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class ImagetestingActivity extends AppCompatActivity {
@@ -175,9 +178,17 @@ public class ImagetestingActivity extends AppCompatActivity {
                                             //You will get donwload URL in uri
                                             Toast.makeText(ImagetestingActivity.this, ""+uri.toString(), Toast.LENGTH_SHORT).show();
                                             //Adding that URL to Realtime database
+                                            DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
+                                            HashMap<String,Object>hashMap=new HashMap<>();
+                                            String image=uri.toString();
+                                            hashMap.put("imageUrl",image);
+                                            dfr.child("chat").push().setValue(hashMap);
 
                                         }
                                     });
+
+
+
 
                                 }
                             })
@@ -214,4 +225,6 @@ public class ImagetestingActivity extends AppCompatActivity {
                             });
         }
     }
+
+
 }
