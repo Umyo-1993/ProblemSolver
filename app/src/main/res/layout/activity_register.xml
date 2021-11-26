@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="12dp"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="12dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerv"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:text="Sign Up"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/fullnamev"
+        android:padding="4dp"
+
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_userimage"
+        app:layout_constraintTop_toBottomOf="@id/registerv"
+        android:text="  Full Name"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintStart_toEndOf="@id/guideline_right"
+        tools:ignore="MissingConstraints"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/fullnameed"
+        android:hint="Enter Full Name"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/fullnamev"
+        tools:ignore="MissingConstraints" />
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="@+id/fullnameed"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailv"
+        android:textColor="@color/black"
+
+        android:padding="4dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_blackemail"
+        app:layout_constraintTop_toBottomOf="@id/line1"
+        android:text="  Email Address"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        tools:ignore="MissingConstraints"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailed"
+        android:hint="Enter your Email"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/mailv"
+        tools:ignore="MissingConstraints" />
+    <View
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="@+id/emailed"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernametv"
+        android:padding="4dp"
+        android:layout_marginTop="20dp"
+
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/ic_userimage"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        android:text="  Username"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+
+        tools:ignore="MissingConstraints"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameet"
+        android:hint="Username"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@id/usernametv"
+        tools:ignore="MissingConstraints" />
+    <View
+        android:id="@+id/line3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameet"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordv"
+        android:padding="4dp"
+
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_blackpadlock"
+        app:layout_constraintTop_toBottomOf="@id/line3"
+        android:text="  Enter your password"
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        tools:ignore="MissingConstraints"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/passworded"
+        android:hint="Enter your password"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/passwordv"
+        tools:ignore="MissingConstraints" />
+    <View
+        android:id="@+id/line4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="@+id/passworded"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/phonenumberv"
+        android:padding="4dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_userphone"
+        app:layout_constraintTop_toBottomOf="@id/line4"
+        android:text="  Enter your phone number"
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        tools:ignore="MissingConstraints"
+        />
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/phonenumbered"
+        android:hint="Enter your phonenumber"
+
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/phonenumberv"
+        tools:ignore="MissingConstraints" />
+    <View
+        android:id="@+id/line5"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintBottom_toBottomOf="@+id/phonenumbered"
+        />
+
+    <Button
+        android:id="@+id/buttonfinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bluelight"
+        android:text="Sign Up final"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/line5"
+
+
+        tools:ignore="MissingConstraints" />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>

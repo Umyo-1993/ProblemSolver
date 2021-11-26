@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".StartPageActivity1"
+    tools:showIn="@layout/app_bar_home">
+
+  <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:id="@+id/item_1"
+      android:text="premium"
+      />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_2"
+        android:text="Free"
+        android:layout_below="@id/item_1"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_3"
+        android:text="জি আর ই"
+        android:layout_below="@id/item_2"
+        />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:id="@+id/item_4"
+        android:text="উপরের যেকোনো একটিতে ক্লিক করুন"
+        android:gravity="center_horizontal"
+
+        android:layout_below="@id/item_3"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>

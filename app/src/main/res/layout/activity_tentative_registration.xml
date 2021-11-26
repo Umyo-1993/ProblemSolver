@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tentative_Registration">
+    <ImageView
+        android:id="@+id/imageViewlogoreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+
+        tools:ignore="VectorDrawableCompat" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mailtent"
+        android:textStyle="italic"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/imageViewlogoreg"
+        android:textSize="20sp"
+        android:hint="Enter a valid Email for Registration"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordtent"
+        android:layout_below="@id/mailtent"
+        android:textSize="20sp"
+        android:inputType="numberPassword"
+        android:hint="Enter Password"
+        />
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordtent"
+        android:layout_marginTop="50dp"
+        android:background="@color/bluelight"
+        android:text="Proceed" />
+</RelativeLayout>

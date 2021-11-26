@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MessageActivity">
+
+
+    <ImageView
+        android:id="@+id/imageViewuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_userimage"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="2dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/chatrecycler"
+        android:layout_below="@+id/imageViewuser"
+        android:layout_marginTop="100dp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/usernamey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/imageViewuser"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="147dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_send"
+        android:layout_below="@+id/imageViewuser"
+        android:layout_marginTop="500dp"
+        android:hint="Type Msg Here !!"
+
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/btn_send"
+        android:textColor="@color/white"
+        android:layout_below="@+id/imageViewuser"
+        android:drawableBottom="@drawable/ic_send_4008"
+        android:layout_marginTop="500dp"
+        android:layout_toRightOf="@+id/text_send"
+
+        />
+    <ImageView
+        android:id="@+id/imageup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_send"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_upload_image"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="2dp"
+        tools:ignore="MissingConstraints" />
+
+
+</RelativeLayout>
