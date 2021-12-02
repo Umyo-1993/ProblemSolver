@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -82,9 +83,10 @@ public class MessageActivity extends AppCompatActivity {
 
         intent=getIntent();
         String userid=intent.getStringExtra("userid");
+        String msgid=userid;
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance().getReference("MyUsers");
-        referencech= FirebaseDatabase.getInstance().getReference("chat");
+        referencech= FirebaseDatabase.getInstance().getReference("chat").child(fuser.getUid()).child(userid);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
@@ -99,11 +101,18 @@ public class MessageActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Chats chats = dataSnapshot.getValue(Chats.class);
-                    list.add(chats);
-                    String a=dataSnapshot.toString();
+                    String a="Umo";
+                  //   if((chats.getSender()==fuser.getUid().toString() && chats.getReceiver()==userid.toString())) {
+
+                        list.add(chats);
+                   // String a = fuser.toString();
+
+
+             //      }
 
                 }
                 chatAdapter.notifyDataSetChanged();
+
 
             }
 
@@ -142,7 +151,13 @@ public class MessageActivity extends AppCompatActivity {
                 String msg=text_send.getText().toString();
                 if(!msg.equals(""))
                 {
-                    sendmessage(fuser.getUid(),userid,msg);
+                   // sendmessage(fuser.getUid(),userid,msg);
+                    DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
+                    HashMap<String,Object>hashMap=new HashMap<>();
+                    hashMap.put("sender",fuser.getUid());
+                    hashMap.put("receiver",userid);
+                    hashMap.put("msg",msg);
+                    dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
 
                 }
                 text_send.setText("");
@@ -151,8 +166,9 @@ public class MessageActivity extends AppCompatActivity {
         imageupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-Intent intent=new Intent(MessageActivity.this,ImagetestingActivity.class);
-startActivity(intent);
+     Intent intent=new Intent(MessageActivity.this,ImagetestingActivity.class);
+     intent.putExtra("userid",msgid);
+     startActivity(intent);
             }
         });
     }

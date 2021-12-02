@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,8 +47,9 @@ public class personAdapter extends RecyclerView.Adapter<personAdapter.MyViewHold
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,MessageActivity.class);
-                intent.putExtra("userid",uid);
+                intent.putExtra("userid",user.getUsernamedemo());
                 context.startActivity(intent);
+
 
             }
         });

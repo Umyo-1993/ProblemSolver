@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,6 +41,7 @@ public class ImagetestingActivity extends AppCompatActivity {
     private Button btnSelect, btnUpload;
 
     // view for image view
+
     private ImageView imageView;
 
     // Uri indicates, where the image will be picked from
@@ -65,6 +68,10 @@ public class ImagetestingActivity extends AppCompatActivity {
         // get the Firebase  storage reference
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        Intent intent=getIntent();
+        String userid=intent.getStringExtra("userid");
+        FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
 
         // on pressing btnSelect SelectImage() is called
         btnSelect.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +85,95 @@ public class ImagetestingActivity extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadImage();
+
+                //uploadImage();
+                if (filePath != null) {
+
+                    // Code for showing progressDialog while uploading
+                    ProgressDialog progressDialog = new ProgressDialog(ImagetestingActivity.this);
+                   progressDialog.setTitle("Uploading...");
+                   // progressDialog.show();
+
+                    // Defining the child of storageReference
+                    StorageReference ref
+                            = storageReference
+                            .child(
+                                    "images/"
+                                            + UUID.randomUUID().toString());
+
+                    // adding listeners on upload
+                    // or failure of image
+                    ref.putFile(filePath)
+                            .addOnSuccessListener(
+                                    new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+
+                                        @Override
+                                        public void onSuccess(
+                                                UploadTask.TaskSnapshot taskSnapshot) {
+
+
+                                            // Image uploaded successfully
+                                            // Dismiss dialog
+                                            progressDialog.dismiss();
+                                            Toast.makeText(ImagetestingActivity.this,
+                                                    "Image Uploaded!!",
+                                                    Toast.LENGTH_SHORT)
+                                                    .show();
+                                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                @Override
+                                                public void onSuccess(Uri uri) {
+                                                    //You will get donwload URL in uri
+                                                    Toast.makeText(ImagetestingActivity.this, ""+uri.toString(), Toast.LENGTH_SHORT).show();
+                                                    //Adding that URL to Realtime database
+                                                    DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
+                                                    HashMap<String,Object>hashMap=new HashMap<>();
+                                                    String image=uri.toString();
+                                                    hashMap.put("imageUrl",image);
+
+                                                    dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
+
+                                                }
+                                            });
+
+
+
+
+                                        }
+                                    })
+
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                    // Error, Image not uploaded
+                                    progressDialog.dismiss();
+                                    Toast
+                                            .makeText(ImagetestingActivity.this,
+                                                    "Failed " + e.getMessage(),
+                                                    Toast.LENGTH_SHORT)
+                                            .show();
+                                }
+                            })
+                            .addOnProgressListener(
+                                    new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                        // Progress Listener for loading
+                                        // percentage on the dialog box
+                                        @Override
+                                        public void onProgress(
+                                                UploadTask.TaskSnapshot taskSnapshot) {
+                                            double progress
+                                                    = (100.0
+                                                    * taskSnapshot.getBytesTransferred()
+                                                    / taskSnapshot.getTotalByteCount());
+                                            progressDialog.setMessage(
+                                                    "Uploaded "
+                                                            + (int) progress + "%");
+                                        }
+                                    });
+                }
+
             }
         });
     }
@@ -182,6 +277,7 @@ public class ImagetestingActivity extends AppCompatActivity {
                                             HashMap<String,Object>hashMap=new HashMap<>();
                                             String image=uri.toString();
                                             hashMap.put("imageUrl",image);
+
                                             dfr.child("chat").push().setValue(hashMap);
 
                                         }

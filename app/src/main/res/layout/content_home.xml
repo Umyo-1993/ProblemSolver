@@ -14,20 +14,20 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="20dp"
       android:id="@+id/item_1"
-      android:text="premium"
+      android:text="Android"
       />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/item_2"
-        android:text="Free"
+        android:text="PHP"
         android:layout_below="@id/item_1"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/item_3"
-        android:text="জি আর ই"
+        android:text="MySql"
         android:layout_below="@id/item_2"
         />
     <TextView
@@ -36,7 +36,7 @@
         android:layout_height="50dp"
         android:padding="@dimen/activity_horizontal_margin"
         android:id="@+id/item_4"
-        android:text="উপরের যেকোনো একটিতে ক্লিক করুন"
+        android:text="click in your problem's field"
         android:gravity="center_horizontal"
 
         android:layout_below="@id/item_3"
