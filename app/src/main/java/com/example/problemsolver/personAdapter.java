@@ -40,19 +40,23 @@ public class personAdapter extends RecyclerView.Adapter<personAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+
         Users user = list.get(position);
+        
 
-        holder.username.setText(user.getUsernamedemo());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(context,MessageActivity.class);
-                intent.putExtra("userid",user.getUsernamedemo());
-                context.startActivity(intent);
+            holder.username.setText(user.getUsernamedemo());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, MessageActivity.class);
+                    intent.putExtra("userid", user.getUsernamedemo());
+                    context.startActivity(intent);
+                    //   System.out.println(position);
 
 
-            }
-        });
+                }
+            });
+
 
 
 

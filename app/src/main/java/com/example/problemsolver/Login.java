@@ -19,6 +19,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
     EditText emailed,passworded;
@@ -67,7 +71,8 @@ public class Login extends AppCompatActivity {
         returnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this,Tentative_Registration.class);
+              Intent intent=new Intent(Login.this,Tentative_Registration.class);
+
                 startActivity(intent);
             }
         });
@@ -144,8 +149,17 @@ public class Login extends AppCompatActivity {
                                     Toast.LENGTH_LONG)
                                     .show();
 
+                            //firebase email list
+                            DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
+                            HashMap<String,Object>hashMap=new HashMap<>();
+                            hashMap.put("emailqueue",email);//use uid in child
+                            dfr.child("EmailQueue").setValue(hashMap);
+
+
+
                             // hide the progress bar
-                            Intent intent=new Intent(Login.this,StartPageActivity1.class);
+                           // Intent intent=new Intent(Login.this,StartPageActivity1.class);
+                            Intent intent=new Intent(Login.this,UsersActivity2.class);
                             startActivity(intent);
 
                             if(rememberme.isChecked() ){
