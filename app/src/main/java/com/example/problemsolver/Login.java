@@ -158,8 +158,8 @@ public class Login extends AppCompatActivity {
 
 
                             // hide the progress bar
-                           // Intent intent=new Intent(Login.this,StartPageActivity1.class);
-                            Intent intent=new Intent(Login.this,UsersActivity2.class);
+                            Intent intent=new Intent(Login.this,StartPageActivity1.class);
+                      //      Intent intent=new Intent(Login.this,UsersActivity2.class);
                             startActivity(intent);
 
                             if(rememberme.isChecked() ){

@@ -38,16 +38,21 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
     public void onBindViewHolder(@NonNull personAdapter2.MyViewHolder2 holder, int position) {
         Users2 user = list.get(position);
         holder.emailqueues.setText(user.getEmailqueue());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(context, StartPageActivity1.class);
-             //  intent.putExtra("userid", user.getEmailqueue());
-               context.startActivity(intent);
+        if(position==0) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, UsersActivity.class);
+                    //  intent.putExtra("userid", user.getEmailqueue());
 
-           }
-       });
+                    context.startActivity(intent);
 
+                }
+            });
+        }
+        else{
+            Toast.makeText(context, "Please wait for  some moment...One of our Engineers will meet you..", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
