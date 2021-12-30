@@ -44,7 +44,6 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
                 public void onClick(View view) {
                     Intent intent = new Intent(context, UsersActivity.class);
                     //  intent.putExtra("userid", user.getEmailqueue());
-
                     context.startActivity(intent);
 
                 }

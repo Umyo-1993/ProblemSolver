@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -65,6 +67,7 @@ public class MessageActivity extends AppCompatActivity {
         sendbtn=findViewById(R.id.btn_send);
         text_send=findViewById(R.id.text_send);
         recyclerView=findViewById(R.id.chatrecycler);
+
         //  Toolbar toolbar=findViewById(R.id.toolbarmsg);
         //    setSupportActionBar(toolbar);
         //   getSupportActionBar().setTitle("");
@@ -92,6 +95,7 @@ public class MessageActivity extends AppCompatActivity {
         list = new ArrayList<>();
         chatAdapter = new ChatAdapter(MessageActivity.this,list);
         recyclerView.setAdapter(chatAdapter);
+        FloatingActionButton fab=findViewById(R.id.floatingActionButton);
         referencech.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -143,7 +147,14 @@ public class MessageActivity extends AppCompatActivity {
             }
 
         });
-
+       //floating activity
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference fbd=FirebaseDatabase.getInstance().getReference();
+                fbd.child("EmailQueue2").child("123").child("emailqueue").removeValue();
+            }
+        });
         sendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
