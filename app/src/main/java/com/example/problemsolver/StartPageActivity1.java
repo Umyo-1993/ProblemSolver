@@ -78,7 +78,7 @@ public class StartPageActivity1 extends AppCompatActivity implements NavigationV
               //  startActivity(intent);
                 Toast.makeText(StartPageActivity1.this, "Hi there", Toast.LENGTH_SHORT).show();
 
-            Intent intent=new Intent(StartPageActivity1.this,UsersActivity2.class);
+            Intent intent=new Intent(StartPageActivity1.this,Admin_User_Activity.class);
             startActivity(intent);
             }
         });

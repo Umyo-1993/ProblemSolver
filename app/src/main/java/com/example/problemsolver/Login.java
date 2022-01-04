@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +33,8 @@ public class Login extends AppCompatActivity {
     CheckBox rememberme;
     TextView forgetpw;
 
-
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String uid = user.getUid();
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -121,6 +123,7 @@ public class Login extends AppCompatActivity {
         email = emailed.getText().toString();
         password = passworded.getText().toString();
 
+
         // validations for input email and password
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
@@ -150,16 +153,17 @@ public class Login extends AppCompatActivity {
                                     .show();
 
                             //firebase email list
-                            DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
+                            DatabaseReference dfr=FirebaseDatabase.getInstance().getReference().child("EmailQueue").child(uid);
                             HashMap<String,Object>hashMap=new HashMap<>();
                             hashMap.put("emailqueue",email);//use uid in child
-                            dfr.child("EmailQueue").setValue(hashMap);
+                            hashMap.put("uid",uid);
+                            dfr.setValue(hashMap);
 
 
 
                             // hide the progress bar
                             Intent intent=new Intent(Login.this,StartPageActivity1.class);
-                      //      Intent intent=new Intent(Login.this,UsersActivity2.class);
+                      //    Intent intent=new Intent(Login.this,UsersActivity2.class);
                             startActivity(intent);
 
                             if(rememberme.isChecked() ){

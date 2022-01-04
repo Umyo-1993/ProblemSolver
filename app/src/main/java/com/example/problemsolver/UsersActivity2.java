@@ -1,12 +1,9 @@
 package com.example.problemsolver;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,14 +44,10 @@ public class UsersActivity2 extends AppCompatActivity {
                     Users2 user = dataSnapshot.getValue(Users2.class);
                     i++;
 
-
                     list.add(user);
-
 
                     String a=dataSnapshot.toString();
                     //only one value added to the list
-
-
 
 
                 }

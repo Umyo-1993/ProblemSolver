@@ -153,6 +153,10 @@ public class MessageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DatabaseReference fbd=FirebaseDatabase.getInstance().getReference();
                 fbd.child("EmailQueue2").child("123").child("emailqueue").removeValue();
+                Toast.makeText(MessageActivity.this, "Chat Ended", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MessageActivity.this,Login.class);
+                startActivity(intent);
+                
             }
         });
         sendbtn.setOnClickListener(new View.OnClickListener() {
