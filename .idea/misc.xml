@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/buttonrectanglebox.xml" value="0.1" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/circle.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/rectangular_border.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_admin_message.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_admin_premsg.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_admin_user.xml" value="0.1" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_google_login.xml" value="0.14" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_imagetesting.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_message.xml" value="0.18" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_start_page1.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_tentative_registration.xml" value="0.1" />
@@ -19,7 +24,7 @@
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/adminuser_item.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/app_bar_home.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/chat_item.xml" value="0.1" />
-        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/content_home.xml" value="0.1" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/content_home.xml" value="0.18" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/nav_header_home.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/user_item2.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/useritem.xml" value="0.1" />

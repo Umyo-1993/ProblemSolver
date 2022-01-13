@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProblemSolver">
         <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".GoogleLoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".Admin_Message_Activity"
             android:exported="true" />
         <activity

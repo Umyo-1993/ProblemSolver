@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class StartPageActivity1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView;
     Button btn1,btn2;
+    ImageView im1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,13 @@ public class StartPageActivity1 extends AppCompatActivity implements NavigationV
         navigationView.bringToFront();
         btn1=findViewById(R.id.item_1);
         btn2=findViewById(R.id.item_2);
+        im1=findViewById(R.id.expert1);
+        im1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(StartPageActivity1.this, "worked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
