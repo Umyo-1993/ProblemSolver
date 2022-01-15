@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:shadowColor="#0E0E0E"
-            android:text="Sign-In with Google using Firebase!"
+            android:text="Sign-In with Google "
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="14sp" />
@@ -96,7 +96,7 @@
 
             android:includeFontPadding="false"
             android:shadowColor="#0E0E0E"
-            android:text="Taimoor Sikander - Coding with T"
+            android:text="Problem Solver App"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="14sp" />

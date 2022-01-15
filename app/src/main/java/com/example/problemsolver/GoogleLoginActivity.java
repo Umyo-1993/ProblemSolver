@@ -23,6 +23,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 
 public class GoogleLoginActivity extends AppCompatActivity {
@@ -120,6 +127,10 @@ public class GoogleLoginActivity extends AppCompatActivity {
 
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        String usernamest=signInAccount.getDisplayName();
+        String mailst=signInAccount.getEmail();
+        String fullnamest=signInAccount.getGivenName();
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -127,6 +138,53 @@ public class GoogleLoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String uid = user.getUid();
+
+                            //firebase RealTime database Update...
+                            final DatabaseReference userref= FirebaseDatabase.getInstance().getReference().child(uid);
+
+                            userref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                                    if(!dataSnapshot.child("Users").child(usernamest).exists())
+                                    {
+                                        HashMap<String, Object> userdataMap = new HashMap<>();
+                                        userdataMap.put("username", usernamest);
+                                        userdataMap.put("mail", mailst);
+                                        //  userdataMap.put("location",finaaddress);
+                                        userdataMap.put("fullname",fullnamest);
+                                       // userdataMap.put("phonenumber",phonenumberst);
+
+                                        userref.child("Users").child(usernamest).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful() && usernamest!=null && mailst!=null && fullnamest!=null )
+                                                {
+                                                    Toast.makeText(GoogleLoginActivity.this, "You have been registered successfully..", Toast.LENGTH_SHORT).show();
+                                                    Intent intent=new Intent(GoogleLoginActivity.this,Login.class);
+
+                                                    startActivity(intent);
+                                                }
+                                                else
+                                                {
+                                                    Toast.makeText(GoogleLoginActivity.this, "Network error .or change username...Try again later..", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+
+
                             Intent intent = new Intent(getApplicationContext(),Profile.class);
                             startActivity(intent);
 
