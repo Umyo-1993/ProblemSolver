@@ -151,5 +151,30 @@
             android:gravity="center_horizontal"
             />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/googlelogo"
+            android:layout_below="@id/textbottom2"
+            android:src="@drawable/ic_google_logo_wine"
+            android:layout_marginLeft="180dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/adminlogintext"
+            android:text="Admin Login"
+            android:layout_below="@id/textbottom1"
+            android:src="@drawable/ic_google_logo_wine"
+            android:layout_toRightOf="@id/googlelogo"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/bluelight"
+
+            />
+
+
     </RelativeLayout>
 </ScrollView>

@@ -5,13 +5,14 @@
       <map>
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/buttonrectanglebox.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/circle.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/ic_google_logo_wine.xml" value="0.11666666666666667" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/drawable/rectangular_border.xml" value="0.10208333333333333" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_admin_message.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_admin_premsg.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_admin_user.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_google_login.xml" value="0.14" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_imagetesting.xml" value="0.1" />
-        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_message.xml" value="0.18" />
         <entry key="..\:/Users/Umo/AndroidStudioProjects/ProblemSolver/app/src/main/res/layout/activity_profile.xml" value="0.1" />

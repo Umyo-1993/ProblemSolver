@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHolder2>  {
@@ -38,7 +41,14 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
     public void onBindViewHolder(@NonNull personAdapter2.MyViewHolder2 holder, int position) {
         Users2 user = list.get(position);
         holder.emailqueues.setText(user.getEmailqueue());
-        if(position==0) {
+
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user1.getUid();
+        DatabaseReference drv= FirebaseDatabase.getInstance().getReference().child("EmailQueue").child(uid).child("emailqueue");
+
+        String emailverify=drv.getKey();
+       //holder should be done...
+        if(position==0 && emailverify==holder.emailqueues.getText()) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

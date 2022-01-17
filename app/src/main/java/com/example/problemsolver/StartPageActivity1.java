@@ -87,7 +87,7 @@ public class StartPageActivity1 extends AppCompatActivity implements NavigationV
               //  startActivity(intent);
                 Toast.makeText(StartPageActivity1.this, "Hi there", Toast.LENGTH_SHORT).show();
 
-            Intent intent=new Intent(StartPageActivity1.this,Admin_User_Activity.class);
+            Intent intent=new Intent(StartPageActivity1.this,UsersActivity2.class);
             startActivity(intent);
             }
         });
@@ -147,6 +147,7 @@ public class StartPageActivity1 extends AppCompatActivity implements NavigationV
                 intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent1);
                 finish();
+                FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Logged out.....", Toast.LENGTH_SHORT).show();
 
         }

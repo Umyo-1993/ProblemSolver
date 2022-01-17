@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +33,10 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     CheckBox rememberme;
     TextView forgetpw;
+    TextView adminlogin;
+    ImageView googlelogo;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String uid = user.getUid();
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -50,12 +52,15 @@ public class Login extends AppCompatActivity {
         login = findViewById(R.id.signin);
         returnsignup=findViewById(R.id.textbottom2);
         rememberme=findViewById(R.id.checkbox);
+        adminlogin=findViewById(R.id.adminlogintext);
+        googlelogo=findViewById(R.id.googlelogo);
         sharedPreferences=getSharedPreferences("LoginPrefs", MODE_PRIVATE);
         editor=sharedPreferences.edit();
         String email, password;
         email = emailed.getText().toString();
         password = passworded.getText().toString();
         forgetpw=findViewById(R.id.forgetpassword);
+
 
         //return to Registeractivity
         if(email.equals(""))
@@ -73,8 +78,22 @@ public class Login extends AppCompatActivity {
         returnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent=new Intent(Login.this,Tentative_Registration.class);
+                Intent intent=new Intent(Login.this,Tentative_Registration.class);
 
+                startActivity(intent);
+            }
+        });
+        adminlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Login.this,Admin_User_Activity.class);
+                startActivity(intent);
+            }
+        });
+        googlelogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Login.this,GoogleLoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -153,6 +172,8 @@ public class Login extends AppCompatActivity {
                                     .show();
 
                             //firebase email list
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = user.getUid();
                             DatabaseReference dfr=FirebaseDatabase.getInstance().getReference().child("EmailQueue").child(uid);
                             HashMap<String,Object>hashMap=new HashMap<>();
                             hashMap.put("emailqueue",email);//use uid in child
@@ -163,7 +184,7 @@ public class Login extends AppCompatActivity {
 
                             // hide the progress bar
                             Intent intent=new Intent(Login.this,StartPageActivity1.class);
-                      //    Intent intent=new Intent(Login.this,UsersActivity2.class);
+                            //    Intent intent=new Intent(Login.this,UsersActivity2.class);
                             startActivity(intent);
 
                             if(rememberme.isChecked() ){
