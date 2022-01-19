@@ -154,7 +154,7 @@ public class Admin_Message_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatabaseReference fbd=FirebaseDatabase.getInstance().getReference();
-                fbd.child("EmailQueue2").child("123").child("emailqueue").removeValue();
+                fbd.child("EmailQueue").child(adminUserid).child("emailqueue").removeValue();
                 Toast.makeText(Admin_Message_Activity.this, "Chat Ended", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(Admin_Message_Activity.this,Login.class);
                 startActivity(intent);
@@ -171,10 +171,10 @@ public class Admin_Message_Activity extends AppCompatActivity {
                     // sendmessage(fuser.getUid(),userid,msg);
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                     HashMap<String,Object>hashMap=new HashMap<>();
-                    hashMap.put("sender",fuser.getUid());
-                    hashMap.put("receiver",userid);
+                    hashMap.put("sender",adminUsername);
+                    hashMap.put("receiver",adminUserid);
                     hashMap.put("msg",msg);
-                    dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
+                    dfr.child("chat").child(adminUserid).child(adminUsername).push().setValue(hashMap);
 
                 }
                 text_send.setText("");

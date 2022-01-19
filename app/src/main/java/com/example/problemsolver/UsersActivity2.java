@@ -23,7 +23,7 @@ public class UsersActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users2);
         recyclerView = findViewById(R.id.recycler1);
-        database = FirebaseDatabase.getInstance().getReference("EmailQueue2");
+        database = FirebaseDatabase.getInstance().getReference("EmailQueue");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();

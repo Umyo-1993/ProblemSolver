@@ -151,8 +151,10 @@ public class MessageActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
                 DatabaseReference fbd=FirebaseDatabase.getInstance().getReference();
-                fbd.child("EmailQueue2").child("123").child("emailqueue").removeValue();
+                fbd.child("EmailQueue").child(uid).child("emailqueue").removeValue();
                 Toast.makeText(MessageActivity.this, "Chat Ended", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(MessageActivity.this,Login.class);
                 startActivity(intent);
