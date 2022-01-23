@@ -33,15 +33,16 @@ public class UsersActivity2 extends AppCompatActivity {
 
 
 
-        database.addValueEventListener(new ValueEventListener() {
+        database.orderByChild("value").addValueEventListener(new ValueEventListener() {
             int i=0;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
+             list.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Users2 user = dataSnapshot.getValue(Users2.class);
+                    //edit 2
                     i++;
 
                     list.add(user);

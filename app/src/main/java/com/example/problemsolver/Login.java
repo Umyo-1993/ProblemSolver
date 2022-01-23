@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
@@ -173,13 +175,16 @@ public class Login extends AppCompatActivity {
 
                             //firebase email list
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            Calendar calendar = Calendar.getInstance();
+                            //Returns current time in millis
+                            long timeMilli2 = calendar.getTimeInMillis();
                             String uid = user.getUid();
                             DatabaseReference dfr=FirebaseDatabase.getInstance().getReference().child("EmailQueue").child(uid);
                             HashMap<String,Object>hashMap=new HashMap<>();
                             hashMap.put("emailqueue",email);//use uid in child
                             hashMap.put("uid",uid);
+                            hashMap.put("value",timeMilli2);
                             dfr.setValue(hashMap);
-
 
 
                             // hide the progress bar

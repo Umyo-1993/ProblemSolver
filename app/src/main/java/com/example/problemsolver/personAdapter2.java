@@ -50,34 +50,34 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
         DatabaseReference drv= FirebaseDatabase.getInstance().getReference().child("EmailQueue").child(uid).child("emailqueue");
 
 
-       //holder should be done...
-       drv.addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot snapshot) {
-               String value =snapshot.getValue(String.class);
-               String emailverify=holder.emailqueues.getText().toString();
-               if(holder.getAdapterPosition()!=0 ) {
-                   holder.itemView.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           Intent intent = new Intent(context, UsersActivity.class);
-                           //  intent.putExtra("userid", user.getEmailqueue());
-                           context.startActivity(intent);
+        //holder should be done...
+        drv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value =snapshot.getValue(String.class);
+                String emailverify=holder.emailqueues.getText().toString();
+                if(holder.getAdapterPosition()!=100 ) {
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(context, UsersActivity.class);
+                            //  intent.putExtra("userid", user.getEmailqueue());
+                            context.startActivity(intent);
 
-                       }
-                   });
-               }
-               else{
-                   Toast.makeText(context, "Please wait for  some moment...One of our Engineers will meet you..", Toast.LENGTH_SHORT).show();
-                   }
-           }
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(context, "Please wait for  some moment...One of our Engineers will meet you..", Toast.LENGTH_SHORT).show();
+                }
+            }
 
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-           }
-       });
+            }
+        });
 
 
      /*   if(position==0 && emailverify==holder.emailqueues.getText()) {
@@ -87,7 +87,6 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
                     Intent intent = new Intent(context, UsersActivity.class);
                     //  intent.putExtra("userid", user.getEmailqueue());
                     context.startActivity(intent);
-
                 }
             });
         }

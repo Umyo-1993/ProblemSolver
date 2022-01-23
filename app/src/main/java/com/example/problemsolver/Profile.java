@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 
@@ -47,14 +48,18 @@ public class Profile extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  FirebaseAuth.getInstance().signOut();
-               // Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                //  FirebaseAuth.getInstance().signOut();
+                // Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Calendar calendar = Calendar.getInstance();
+                //Returns current time in millis
+                long timeMilli2 = calendar.getTimeInMillis();
                 FirebaseUser user = mAuth.getCurrentUser();
                 String uid = user.getUid();
                 DatabaseReference dfr= FirebaseDatabase.getInstance().getReference().child("EmailQueue").child(uid);
                 HashMap<String,Object> hashMap=new HashMap<>();
                 hashMap.put("emailqueue",signInAccount.getEmail());//use uid in child
                 hashMap.put("uid",uid);
+                hashMap.put("value",timeMilli2);
                 dfr.setValue(hashMap);
                 Toast.makeText(Profile.this, "email and uid added", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(Profile.this,StartPageActivity1.class);

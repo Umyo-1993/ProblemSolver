@@ -60,7 +60,7 @@ public class Admin_Message_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_admin_message);
         imageView=findViewById(R.id.imageViewuser);
         imageupload=findViewById(R.id.imageup);
         username=findViewById(R.id.usernamey);
@@ -85,11 +85,11 @@ public class Admin_Message_Activity extends AppCompatActivity {
 
 
         intent=getIntent();
-        String userid=intent.getStringExtra("userid");
+      // String userid=intent.getStringExtra("userid");
         String adminUserid=intent.getStringExtra("adminuserid");
         String adminUsername=intent.getStringExtra("adminusername");
-        String msgid=userid;
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
+       // String msgid=userid;
+       // fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance().getReference("MyUsers");
         referencech= FirebaseDatabase.getInstance().getReference("chat").child(adminUserid).child(adminUsername);
         recyclerView.setHasFixedSize(true);
@@ -127,7 +127,12 @@ public class Admin_Message_Activity extends AppCompatActivity {
 
             }
         });
+        
 
+
+        
+        
+        
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -184,7 +189,7 @@ public class Admin_Message_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Admin_Message_Activity.this,ImagetestingActivity.class);
-                intent.putExtra("userid",msgid);
+             //   intent.putExtra("userid",msgid);
                 startActivity(intent);
             }
         });

@@ -14,8 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 public class adminpersonAdapter extends RecyclerView.Adapter<personAdapter2.MyViewHolder2>  {
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String uid = user.getUid();
+  //  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+  //  String uid = user.getUid();
 
     Context context;
 

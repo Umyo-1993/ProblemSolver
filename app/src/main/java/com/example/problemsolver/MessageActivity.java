@@ -106,13 +106,13 @@ public class MessageActivity extends AppCompatActivity {
 
                     Chats chats = dataSnapshot.getValue(Chats.class);
                     String a="Umo";
-                  //   if((chats.getSender()==fuser.getUid().toString() && chats.getReceiver()==userid.toString())) {
+                    //   if((chats.getSender()==fuser.getUid().toString() && chats.getReceiver()==userid.toString())) {
 
-                        list.add(chats);
-                   // String a = fuser.toString();
+                    list.add(chats);
+                    // String a = fuser.toString();
 
 
-             //      }
+                    //      }
 
                 }
                 chatAdapter.notifyDataSetChanged();
@@ -147,7 +147,7 @@ public class MessageActivity extends AppCompatActivity {
             }
 
         });
-       //floating activity
+        //floating activity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +158,7 @@ public class MessageActivity extends AppCompatActivity {
                 Toast.makeText(MessageActivity.this, "Chat Ended", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(MessageActivity.this,Login.class);
                 startActivity(intent);
-                
+
             }
         });
         sendbtn.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +168,7 @@ public class MessageActivity extends AppCompatActivity {
                 String msg=text_send.getText().toString();
                 if(!msg.equals(""))
                 {
-                   // sendmessage(fuser.getUid(),userid,msg);
+                    // sendmessage(fuser.getUid(),userid,msg);
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                     HashMap<String,Object>hashMap=new HashMap<>();
                     hashMap.put("sender",fuser.getUid());
@@ -183,9 +183,9 @@ public class MessageActivity extends AppCompatActivity {
         imageupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-     Intent intent=new Intent(MessageActivity.this,ImagetestingActivity.class);
-     intent.putExtra("userid",msgid);
-     startActivity(intent);
+                Intent intent=new Intent(MessageActivity.this,ImagetestingActivity.class);
+                intent.putExtra("userid",msgid);
+                startActivity(intent);
             }
         });
     }
