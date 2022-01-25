@@ -33,7 +33,7 @@ public class Admin_User_Activity extends AppCompatActivity {
 
 
 
-        database.addValueEventListener(new ValueEventListener() {
+        database.orderByChild("value").addValueEventListener(new ValueEventListener() {
             int i=0;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

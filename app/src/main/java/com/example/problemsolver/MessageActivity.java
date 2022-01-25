@@ -154,7 +154,7 @@ public class MessageActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
                 DatabaseReference fbd=FirebaseDatabase.getInstance().getReference();
-                fbd.child("EmailQueue").child(uid).child("emailqueue").removeValue();
+                fbd.child("EmailQueue").child(uid).removeValue();
                 Toast.makeText(MessageActivity.this, "Chat Ended", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(MessageActivity.this,Login.class);
                 startActivity(intent);

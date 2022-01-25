@@ -56,7 +56,7 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value =snapshot.getValue(String.class);
                 String emailverify=holder.emailqueues.getText().toString();
-                if(holder.getAdapterPosition()!=100 ) {
+                if(holder.getAdapterPosition()==0) {
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

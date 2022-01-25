@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.zolad.zoominimageview.ZoomInImageView;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
 
         Glide.with(context)
                 .load(chats.getImageUrl())
-                .into(holder.imgmsg);
+                .into(holder.zommim);
+        //Edit image1
+      
     }
 
     @Override
@@ -53,13 +56,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
 
         TextView chatmsg;
         ImageView imgmsg;
+        ZoomInImageView zommim;
 
         public MyViewHolder1(@NonNull View itemView) {
             super(itemView);
 
 
             chatmsg=itemView.findViewById(R.id.chat_view);
-            imgmsg=itemView.findViewById(R.id.imgViewmsg);
+            zommim=itemView.findViewById(R.id.imgViewmsg);
 
         }
     }

@@ -85,7 +85,7 @@ public class Admin_Message_Activity extends AppCompatActivity {
 
 
         intent=getIntent();
-      // String userid=intent.getStringExtra("userid");
+      //String userid=intent.getStringExtra("userid");
         String adminUserid=intent.getStringExtra("adminuserid");
         String adminUsername=intent.getStringExtra("adminusername");
        // String msgid=userid;
@@ -159,7 +159,7 @@ public class Admin_Message_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatabaseReference fbd=FirebaseDatabase.getInstance().getReference();
-                fbd.child("EmailQueue").child(adminUserid).child("emailqueue").removeValue();
+                fbd.child("EmailQueue").child(adminUserid).removeValue();
                 Toast.makeText(Admin_Message_Activity.this, "Chat Ended", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(Admin_Message_Activity.this,Login.class);
                 startActivity(intent);
@@ -189,8 +189,8 @@ public class Admin_Message_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Admin_Message_Activity.this,ImagetestingActivity.class);
-             //   intent.putExtra("userid",msgid);
-                startActivity(intent);
+               //  intent.putExtra("userid",msgid);
+               // startActivity(intent);
             }
         });
     }
