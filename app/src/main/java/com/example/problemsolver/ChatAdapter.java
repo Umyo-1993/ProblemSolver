@@ -23,6 +23,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
     Context context;
     ArrayList<Chats> list;
 
+
+
+
     public ChatAdapter(Context context, ArrayList<Chats> list) {
         this.context = context;
         this.list = list;
@@ -39,6 +42,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
         Chats chats = list.get(position);
 
         holder.chatmsg.setText(chats.getMsg());
+        holder.user.setText(chats.getUser());
 
         Glide.with(context)
                 .load(chats.getImageUrl())
@@ -53,7 +57,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
     }
 
     public static class MyViewHolder1 extends RecyclerView.ViewHolder{
-
+        TextView user;
         TextView chatmsg;
         ImageView imgmsg;
         ZoomInImageView zommim;
@@ -64,6 +68,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder1>
 
             chatmsg=itemView.findViewById(R.id.chat_view);
             zommim=itemView.findViewById(R.id.imgViewmsg);
+            user=itemView.findViewById(R.id.chat_view_name);
 
         }
     }

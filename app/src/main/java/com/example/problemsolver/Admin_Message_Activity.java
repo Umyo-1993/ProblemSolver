@@ -174,11 +174,14 @@ public class Admin_Message_Activity extends AppCompatActivity {
                 if(!msg.equals(""))
                 {
                     // sendmessage(fuser.getUid(),userid,msg);
+                    //Edit 3 28/01/2022
+                    String Admin="Admin";
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                     HashMap<String,Object>hashMap=new HashMap<>();
                     hashMap.put("sender",adminUsername);
                     hashMap.put("receiver",adminUserid);
                     hashMap.put("msg",msg);
+                    hashMap.put("user",Admin);
                     dfr.child("chat").child(adminUserid).child(adminUsername).push().setValue(hashMap);
 
                 }
@@ -188,9 +191,10 @@ public class Admin_Message_Activity extends AppCompatActivity {
         imageupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Admin_Message_Activity.this,ImagetestingActivity.class);
-               //  intent.putExtra("userid",msgid);
-               // startActivity(intent);
+                Intent intent=new Intent(Admin_Message_Activity.this,Admin_ImagetestingActivity.class);
+                intent.putExtra("adminusername",adminUsername);
+                intent.putExtra("adminuserid",adminUserid);
+                startActivity(intent);
             }
         });
     }

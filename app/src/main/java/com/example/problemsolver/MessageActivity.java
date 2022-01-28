@@ -169,11 +169,14 @@ public class MessageActivity extends AppCompatActivity {
                 if(!msg.equals(""))
                 {
                     // sendmessage(fuser.getUid(),userid,msg);
+                    //Edit one 28/01
+                    String user="User";
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                     HashMap<String,Object>hashMap=new HashMap<>();
                     hashMap.put("sender",fuser.getUid());
                     hashMap.put("receiver",userid);
                     hashMap.put("msg",msg);
+                    hashMap.put("user",user);
                     dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
 
                 }

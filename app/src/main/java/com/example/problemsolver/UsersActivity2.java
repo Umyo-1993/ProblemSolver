@@ -33,7 +33,9 @@ public class UsersActivity2 extends AppCompatActivity {
 
 
 
-        database.orderByChild("value").addValueEventListener(new ValueEventListener() {
+
+
+        database.orderByChild("value").limitToFirst(1).addValueEventListener(new ValueEventListener() {
             int i=0;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

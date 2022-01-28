@@ -2,10 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <TextView
+
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="type"
+        android:textSize="25sp"
+        android:id="@+id/chat_view_name"
+        android:background="@drawable/rounded_corner_view"
+
+        />
+
     <TextView
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/chat_view"
+        android:layout_below="@id/chat_view_name"
         android:background="@drawable/rounded_corner_view"
 
         />
