@@ -25,7 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Admin_Message_Activity extends AppCompatActivity {
@@ -175,6 +177,10 @@ public class Admin_Message_Activity extends AppCompatActivity {
                 {
                     // sendmessage(fuser.getUid(),userid,msg);
                     //Edit 3 28/01/2022
+
+                    Date date = new Date();
+                    DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+                    String localizedDate = df.format(date);
                     String Admin="Admin";
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                     HashMap<String,Object>hashMap=new HashMap<>();
@@ -182,6 +188,7 @@ public class Admin_Message_Activity extends AppCompatActivity {
                     hashMap.put("receiver",adminUserid);
                     hashMap.put("msg",msg);
                     hashMap.put("user",Admin);
+                    hashMap.put("time",localizedDate);
                     dfr.child("chat").child(adminUserid).child(adminUsername).push().setValue(hashMap);
 
                 }

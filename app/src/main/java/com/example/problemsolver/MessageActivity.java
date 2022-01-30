@@ -25,7 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MessageActivity extends AppCompatActivity {
@@ -111,7 +114,7 @@ public class MessageActivity extends AppCompatActivity {
                     list.add(chats);
                     // String a = fuser.toString();
 
-
+                           
                     //      }
 
                 }
@@ -170,6 +173,11 @@ public class MessageActivity extends AppCompatActivity {
                 {
                     // sendmessage(fuser.getUid(),userid,msg);
                     //Edit one 28/01
+
+                    Date date = new Date();
+                    DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+                    String localizedDate = df.format(date);
+
                     String user="User";
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                     HashMap<String,Object>hashMap=new HashMap<>();
@@ -177,6 +185,7 @@ public class MessageActivity extends AppCompatActivity {
                     hashMap.put("receiver",userid);
                     hashMap.put("msg",msg);
                     hashMap.put("user",user);
+                    hashMap.put("time",localizedDate);
                     dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
 
                 }

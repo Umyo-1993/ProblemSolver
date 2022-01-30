@@ -30,6 +30,15 @@ public class Chats {
     String msg;
     //Edit two 28/01
     String user;
+    String time;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getUser() {
         return user;
