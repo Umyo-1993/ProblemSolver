@@ -32,6 +32,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -130,6 +132,13 @@ public class ImagetestingActivity extends AppCompatActivity {
                                                     HashMap<String,Object>hashMap=new HashMap<>();
                                                     String image=uri.toString();
                                                     hashMap.put("imageUrl",image);
+
+                                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                                                    String currentDateandTime = sdf.format(new Date());
+                                                    String user="User";
+                                                    hashMap.put("imageUrl",image);
+                                                    hashMap.put("user",user);
+                                                    hashMap.put("time",currentDateandTime);
 
                                                     dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
 
@@ -273,10 +282,15 @@ public class ImagetestingActivity extends AppCompatActivity {
                                             //You will get donwload URL in uri
                                             Toast.makeText(ImagetestingActivity.this, ""+uri.toString(), Toast.LENGTH_SHORT).show();
                                             //Adding that URL to Realtime database
+                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                                            String currentDateandTime = sdf.format(new Date());
+                                            String user="User";
                                             DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                                             HashMap<String,Object>hashMap=new HashMap<>();
                                             String image=uri.toString();
                                             hashMap.put("imageUrl",image);
+                                            hashMap.put("user",user);
+                                            hashMap.put("time",currentDateandTime);
 
                                             dfr.child("chat").push().setValue(hashMap);
 

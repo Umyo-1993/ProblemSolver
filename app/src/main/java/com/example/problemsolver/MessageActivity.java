@@ -26,10 +26,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class MessageActivity extends AppCompatActivity {
     ImageView imageView;
@@ -114,7 +116,7 @@ public class MessageActivity extends AppCompatActivity {
                     list.add(chats);
                     // String a = fuser.toString();
 
-                           
+
                     //      }
 
                 }
@@ -177,6 +179,9 @@ public class MessageActivity extends AppCompatActivity {
                     Date date = new Date();
                     DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
                     String localizedDate = df.format(date);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                    String currentDateandTime = sdf.format(new Date());
+
 
                     String user="User";
                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
@@ -185,7 +190,7 @@ public class MessageActivity extends AppCompatActivity {
                     hashMap.put("receiver",userid);
                     hashMap.put("msg",msg);
                     hashMap.put("user",user);
-                    hashMap.put("time",localizedDate);
+                    hashMap.put("time",currentDateandTime);
                     dfr.child("chat").child(fuser.getUid()).child(userid).push().setValue(hashMap);
 
                 }

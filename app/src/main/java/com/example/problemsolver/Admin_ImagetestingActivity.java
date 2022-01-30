@@ -32,6 +32,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -130,8 +132,14 @@ public class Admin_ImagetestingActivity extends AppCompatActivity {
                                                     //Adding that URL to Realtime database
                                                     DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                                                     HashMap<String,Object>hashMap=new HashMap<>();
+                                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                                                    String currentDateandTime = sdf.format(new Date());
                                                     String image=uri.toString();
                                                     hashMap.put("imageUrl",image);
+                                                    String Admin="Admin";
+                                                    hashMap.put("imageUrl",image);
+                                                    hashMap.put("user",Admin);
+                                                    hashMap.put("time",currentDateandTime);
 
                                                     dfr.child("chat").child(adminuserid).child(adminusername).push().setValue(hashMap);
 
@@ -273,13 +281,17 @@ public class Admin_ImagetestingActivity extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             //You will get donwload URL in uri
+                                            String Admin="Admin";
+                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                                            String currentDateandTime = sdf.format(new Date());
                                             Toast.makeText(Admin_ImagetestingActivity.this, ""+uri.toString(), Toast.LENGTH_SHORT).show();
                                             //Adding that URL to Realtime database
                                             DatabaseReference dfr=FirebaseDatabase.getInstance().getReference();
                                             HashMap<String,Object>hashMap=new HashMap<>();
                                             String image=uri.toString();
                                             hashMap.put("imageUrl",image);
-
+                                            hashMap.put("user",Admin);
+                                            hashMap.put("time",currentDateandTime);
                                             dfr.child("chat").push().setValue(hashMap);
 
                                         }
