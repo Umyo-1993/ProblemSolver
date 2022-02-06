@@ -2,6 +2,7 @@ package com.example.problemsolver;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,8 +11,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +28,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class StartPageActivity1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView;
     Button btn1,btn2;
     ImageView im1;
+    TextView Expert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +46,28 @@ public class StartPageActivity1 extends AppCompatActivity implements NavigationV
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
+        androidx.appcompat.widget.SearchView searchView;
+        ListView listView;
+        ArrayList<String> list;
+        ArrayAdapter<String > adapter;
         btn1=findViewById(R.id.item_1);
         btn2=findViewById(R.id.item_2);
         im1=findViewById(R.id.expert1);
+        Expert=findViewById(R.id.experttext);
+        listView = (ListView) findViewById(R.id.listview);
+        searchView =  findViewById(R.id.search);
+        list = new ArrayList<>();
+        list.add("Android");
+        list.add("Python");
+        list.add("MySql");
+        list.add("Firebase");
+        Expert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(StartPageActivity1.this,ExpertProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +125,41 @@ public class StartPageActivity1 extends AppCompatActivity implements NavigationV
             }
         });
 
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(StartPageActivity1.this,UsersActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+  searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+      @Override
+      public boolean onQueryTextSubmit(String query) {
+          if(list.contains(query))
+          {
+              adapter.getFilter().filter(query);
+              listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                  @Override
+                  public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                      Intent intent=new Intent(StartPageActivity1.this,UsersActivity2.class);
+                      startActivity(intent);
+                  }
+              });
+          }else
+          {
+              Toast.makeText(StartPageActivity1.this, "No Match found",Toast.LENGTH_LONG).show();
+          }
+          return false;
+      }
+
+      @Override
+      public boolean onQueryTextChange(String newText) {
+          return false;
+      }
+  });
 
     }
 
