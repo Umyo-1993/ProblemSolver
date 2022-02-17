@@ -24,6 +24,7 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
     String uid = user.getUid();
 
     Context context;
+    int i=0;
 
     ArrayList<Users2> list;
 
@@ -42,6 +43,7 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull personAdapter2.MyViewHolder2 holder, int position) {
+
         Users2 user = list.get(position);
         holder.emailqueues.setText(user.getEmailqueue());
 
@@ -54,10 +56,15 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
         drv.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 String value =snapshot.getValue(String.class);
                 String emailverify=holder.emailqueues.getText().toString();
+                Toast.makeText(context, ""+value, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, ""+emailverify, Toast.LENGTH_SHORT).show();
+                i++;
+                int pos=i-holder.getAdapterPosition()+1;
 
-                if(value==emailverify) {
+               if(!emailverify.isEmpty() && emailverify.equals(value.toString())) {
 
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -69,9 +76,10 @@ public class personAdapter2 extends RecyclerView.Adapter<personAdapter2.MyViewHo
                         }
                     });
                 }
-                else{
-                    Toast.makeText(context, "Please wait for  some moment...One of our Engineers will meet you..", Toast.LENGTH_SHORT).show();
-                }
+               else{
+
+                    Toast.makeText(context, "Please wait for  some moment...you are in "+pos+" position", Toast.LENGTH_SHORT).show();
+                  }
             }
 
 
